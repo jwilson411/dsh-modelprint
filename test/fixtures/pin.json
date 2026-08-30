@@ -1,0 +1,9 @@
+{
+  "_note": "An undocumented key. Extras on a pin file are ignored, never compared.",
+  "provider": "deepseek",
+  "model": "deepseek-chat",
+  "temperature": 0.2,
+  "top_p": 0.95,
+  "tools_hash": "841e5f224b75f50d46803f2b56e8205543d7bdbcadd6ba6341f7ec208302899f",
+  "system_prompt_prefix_hash": "d2c86f05836721d8eb82600a8c62b1e46b800e97d549759fdf36d8757c6cb20b"
+}

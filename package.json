@@ -1,0 +1,56 @@
+{
+  "name": "dsh-modelprint",
+  "version": "0.1.0",
+  "description": "DeepSeek Harness plugin: fingerprint the provider, model id, sampling, offered tool schemas, and system-prompt prefix of each request, and diff the live card against a pinned one through the modelprint_check tool",
+  "license": "MIT",
+  "type": "module",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./fingerprint": "./src/fingerprint.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "src",
+    "examples",
+    "cordis.patch.yml",
+    "LICENSE",
+    "README.md"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "scripts": {
+    "test": "node --test \"test/**/*.test.js\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jwilson411/dsh-modelprint.git"
+  },
+  "homepage": "https://github.com/jwilson411/dsh-modelprint#readme",
+  "bugs": {
+    "url": "https://github.com/jwilson411/dsh-modelprint/issues"
+  },
+  "keywords": [
+    "dsh",
+    "deepseek-harness",
+    "cordis",
+    "plugin",
+    "fingerprint",
+    "drift",
+    "pinning"
+  ],
+  "engines": {
+    "node": ">=22.14.0"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "^4.0.1",
+    "@deepseek-ai/dsh-tools": "^0.1.1-rc.2"
+  },
+  "devDependencies": {
+    "@deepseek-ai/dsh-tools": "0.1.1-rc.2"
+  }
+}
