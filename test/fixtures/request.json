@@ -1,0 +1,36 @@
+{
+  "provider": "deepseek",
+  "model": "deepseek-chat",
+  "temperature": 0.2,
+  "top_p": 0.95,
+  "maxTokens": 4096,
+  "tools": [
+    {
+      "name": "read_file",
+      "description": "Read a UTF-8 text file from the working tree.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "path": { "type": "string", "description": "Path to read." }
+        },
+        "required": ["path"]
+      }
+    },
+    {
+      "name": "kit_ping",
+      "description": "Greet a caller and report which plugin answered.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "who": { "type": "string", "description": "Who to greet." }
+        },
+        "required": ["who"]
+      }
+    }
+  ],
+  "messages": [
+    { "role": "system", "content": "You are a careful assistant. Cite the file you read." },
+    { "role": "user", "content": "What does src/index.js export?" }
+  ]
+}

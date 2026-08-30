@@ -1,0 +1,27 @@
+# The dsh-modelprint bundle patch.
+#
+# `dsh plugin --profile <name> add …` installs this package into the profile,
+# sees the `dsh.bundle.patch` field in its package.json, and appends the
+# package to the profile manifest's ordered `dsh.profile.bundles` list. This
+# file is then composed as one layer over the bundles below it (dsh-base and
+# the mode bundle) and under the profile's own cordis.patch.yml.
+#
+# One insert, one row: the fingerprint plugin. A later layer — the profile's
+# cordis.patch.yml or a `--patch` overlay — addresses the row by its `id` to
+# point the check at a different pinned card. Note that an id-targeted patch
+# replaces the row's whole `config` rather than merging into it, so an override
+# must restate every field it means to keep.
+#
+# The row carries no config here on purpose: the default pin path is relative
+# to the working directory, and a profile that pins nothing still gets the
+# fingerprint recorded and a structured PIN_MISSING from the tool rather than a
+# thrown ENOENT.
+#
+# config:
+#   pinPath   path to the pinned card JSON the tool diffs the live card
+#             against, resolved absolute (default: $DSH_MODELPRINT_PIN, else
+#             ./modelprint.pin.json)
+
+- insert:
+    - id: modelprint
+      name: dsh-modelprint
